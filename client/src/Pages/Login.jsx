@@ -26,7 +26,7 @@ function Login() {
     } else {
       try {
         const { data } = await axios.post(
-          "https://stockexchangebackend-iozl.onrender.com/api/v1/user/loginUser",
+          "https://stockexchangebackend-258z.onrender.com/api/v1/user/loginUser",
           { email, password, role },
           {
             withCredentials: true,
