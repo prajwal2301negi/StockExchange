@@ -69,7 +69,7 @@ const Register = () => {
       formData.append("gender", gender);
       try {
         const { data } = await axios.post(
-          "https://stockexchangebackend-iozl.onrender.com",
+          "https://stockexchangebackend-iozl.onrender.com/api/v1/user/registerUser",
           formData,
           {
             withCredentials: true,
