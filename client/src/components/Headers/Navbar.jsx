@@ -19,7 +19,7 @@ function Navbar() {
     e.preventDefault();
     try {
       const { data } = await axios.get(
-        "http://localhost:8000/api/v1/user/logoutUser",
+        "https://stockexchangebackend-iozl.onrender.com/api/v1/user/logoutUse",
         {
           withCredentials: true,
         }
