@@ -41,7 +41,7 @@ app.use(compression({
 dotenv.config();
 
 app.use(cors({
-    origin: 'https://stockexchange-33bt.onrender.com',
+    origin: [process.env.FRONTEND_URL],
     methods: ["GET","POST","PUT","DELETE"],
     credentials:true
 }));
