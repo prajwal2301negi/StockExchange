@@ -23,7 +23,7 @@ function App() {
     const fetchUsers = async () => {
       try {
         const { data } = await axios.get(
-          "http://localhost:8000/api/v1/user/getUserProfile",
+          "https://stockexchangebackend-iozl.onrender.com/api/v1/user/getUserProfile",
           {
             withCredentials: true,
           }
