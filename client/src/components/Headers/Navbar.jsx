@@ -19,7 +19,7 @@ function Navbar() {
     e.preventDefault();
     try {
       const { data } = await axios.get(
-        "https://stockexchangebackend-258z.onrender.com/api/v1/user/logoutUser",
+        "https://stockexchangeserver.onrender.com/api/v1/user/logoutUser",
         {
           withCredentials: true,
         }
