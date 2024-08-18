@@ -29,7 +29,7 @@ function Contact() {
 
     try {
       await axios.post(
-        "https://stockexchangebackend-258z.onrender.com/api/v1/connect/createConnectMessage",
+        "https://stockexchangeserver.onrender.com/api/v1/connect/createConnectMessage",
         { name, message },
         { withCredentials: true }
       );
