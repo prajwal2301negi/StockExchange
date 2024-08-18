@@ -93,6 +93,7 @@ export const registerUser = asyncErrorHandler(async (req, res,next) => {
       expiresIn: new Date(Date.now()+process.env.COOKIE_EXPIRES *24*60*60*1000),
       httpOnly: true,
       secure: true,
+      sameSite: "None"
     })
     .json({
       success: true,
@@ -157,7 +158,9 @@ export const loginUser = asyncErrorHandler(async (req, res, next) => {
     .status(200)
     .cookie("tokenu", tokenu, {
       expiresIn: new Date(Date.now()+process.env.COOKIE_EXPIRES *24*60*60*1000),
-      httpOnly:true
+      httpOnly:true,
+      sameSite: "None",
+      secure: true
     })
  
     .json({
@@ -177,6 +180,8 @@ export const logOutUser = asyncErrorHandler(async (req, res, next) => {
   .cookie("tokenu", "",{
     expiresIn: new Date(Date.now()),
     httpOnly:true,
+    sameSite: "None",
+    secure: true
   })
 
   .json({
