@@ -26,7 +26,7 @@ function Login() {
     } else {
       try {
         const { data } = await axios.post(
-          "http://localhost:8000/api/v1/user/loginUser",
+          "https://stockexchangebackend-iozl.onrender.com",
           { email, password, role },
           {
             withCredentials: true,
