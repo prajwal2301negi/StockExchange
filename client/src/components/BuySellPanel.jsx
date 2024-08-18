@@ -357,7 +357,7 @@ function CryptoPrice() {
           type = 'sellStock';
         }
 
-        const { data } = await axios.post(`http://localhost:8000/api/v1/stock/${type}`, {
+        const { data } = await axios.post(`https://stockexchangebackend-iozl.onrender.com/api/v1/stock/${type}`, {
           price, quantity, name
         }, {
           withCredentials: true,
