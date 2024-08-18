@@ -29,7 +29,7 @@ function Contact() {
 
     try {
       await axios.post(
-        "http://localhost:8000/api/v1/connect/createConnectMessage",
+        "https://stockexchangebackend-iozl.onrender.com",
         { name, message },
         { withCredentials: true }
       );
