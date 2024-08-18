@@ -99,17 +99,20 @@ export const buyStock = asyncErrorHandler(async (req, res, next) => {
 
     if (!existingStock) {
         // Purchase new stock
+        const value = findUser.balance - totalCost;
+         
         const newStockPurchase = new Stock({
             name,
             price: Number(price),
             total: Number(quantity),
             quantity: Number(quantity),
             user: userId,
+            balance:value,
             stockPrice:price,
             buySell: 'buy',
         });
 
-        findUser.balance -= totalCost;
+      
         await newStockPurchase.save();
         await findUser.save();
 
@@ -123,9 +126,9 @@ export const buyStock = asyncErrorHandler(async (req, res, next) => {
         existingStock.stockPrice = Number(price);
         existingStock.quantity += Number(quantity);
         existingStock.total += Number(quantity);
+        findUser.balance - = totalCost; 
         existingStock.price = (existingStock.price * existingStock.quantity + Number(price) * Number(quantity)) / (existingStock.quantity + Number(quantity));
 
-        findUser.balance -= totalCost;
         await existingStock.save();
         await findUser.save();
 
@@ -168,13 +171,15 @@ export const sellStock = asyncErrorHandler(async (req, res, next) => {
 
     // Update the user's balance
     const saleAmount = Number(price) * requestedQuantity;
-    findUser.balance += saleAmount;
+ 
 
     // Update or delete the stock record
     if (availableQuantity === requestedQuantity) {
         // If selling all shares, remove the stock record
+        findUser.balance += saleAmount;
         await findStock.deleteOne();
         await findUser.save();
+         
         
         return res.status(200).json({
             success: true,
@@ -184,7 +189,7 @@ export const sellStock = asyncErrorHandler(async (req, res, next) => {
     } else {
         // If selling partial shares, update the stock quantity
         findStock.total -= requestedQuantity;
-        
+        findUser.balance += saleAmount;
         await findStock.save();
         await findUser.save();
 
